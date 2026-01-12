@@ -5,6 +5,7 @@ require("dotenv").config();
 const authController = require("./controllers/authController");
 const { authenticateToken } = require("./middleware/authMiddleware");
 const fileRoutes = require("./routes/fileRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.get("/profile", authenticateToken, authController.getProfile);
 
 //file routes
 app.use("/dashboard", fileRoutes);
+app.use("/admin", adminRoutes);
 
 //start server
 app.listen(PORT, () => {

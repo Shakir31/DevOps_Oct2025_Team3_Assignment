@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem("accessToken"));
 
-  // Set axios default headers
+  //set axios default headers
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
-  // Check if user is logged in on mount
+  //check if user is logged in on mount
   useEffect(() => {
     const checkAuth = async () => {
       const storedToken = localStorage.getItem("accessToken");
