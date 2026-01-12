@@ -1,7 +1,7 @@
 const supabase = require("../supabaseClient");
 const supabaseAdmin = require("../supabaseAdmin");
 
-// Get all users
+//get all users
 async function getAllUsers() {
   try {
     const { data, error } = await supabase
@@ -16,7 +16,7 @@ async function getAllUsers() {
   }
 }
 
-// Get user by ID
+//get user by ID
 async function getUserById(userId) {
   try {
     const { data, error } = await supabase
@@ -32,7 +32,7 @@ async function getUserById(userId) {
   }
 }
 
-// Delete user from users table
+//delete user from users table
 async function deleteUserProfile(userId) {
   try {
     const { error } = await supabase
@@ -46,10 +46,10 @@ async function deleteUserProfile(userId) {
   }
 }
 
-// Delete user from Supabase Auth
+//delete user from supabase auth
 async function deleteAuthUser(authUserId) {
   try {
-    // Use admin client to delete user from auth.users
+    //use admin client to delete user from auth.users
     const { data, error } = await supabaseAdmin.auth.admin.deleteUser(
       authUserId
     );
