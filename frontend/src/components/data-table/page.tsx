@@ -57,9 +57,15 @@ const columns = [
 
             const user = row.original; // Get the user object for this row
 
-            const handleDelete = () => {
+            const handleDelete = async  () => {
                 console.log('Delete clicked for user:', user);
-                // Add your delete logic here
+                try {
+                    await axios.delete(`${import.meta.env.VITE_API_URL}/delete_user/${user.userid}`);
+                    // Refresh the users list or remove from state
+                    // setUsers(Users.filter(u => u.id !== user.id));
+                } catch (error) {
+                    console.error('Failed to delete user:', error);
+                }
             };
 
             return (

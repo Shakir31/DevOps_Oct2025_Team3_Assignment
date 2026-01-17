@@ -23,6 +23,7 @@ app.post("/logout", authenticateToken, authController.logout);
 app.get("/profile", authenticateToken, authController.getProfile);
 
 app.get("/Users", adminController.getAllUsers);
+app.delete("/delete_user/:id",authenticateToken, adminController.deleteUser);
 
 //file routes
 app.use("/dashboard", fileRoutes);

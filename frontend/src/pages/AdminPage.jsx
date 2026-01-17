@@ -10,21 +10,21 @@ import DemoPage from "@/components/data-table/page.tsx";
 const AdminPage = () => {
     const { user, isAdmin } = useAuth();
 
-    const [Users, setUsers] = useState([])
-
-
-    useEffect(() => {
-        const getAllUsers = async () => {
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/Users`);
-                setUsers(response.data);
-            } catch (error) {
-                console.error('Failed to fetch users:', error);
-                // Handle error appropriately (show toast, set error state, etc.)
-            }
-        }
-        getAllUsers();
-    }, [])
+    // const [Users, setUsers] = useState([])
+    //
+    //
+    // useEffect(() => {
+    //     const getAllUsers = async () => {
+    //         try {
+    //             const response = await axios.get(`${import.meta.env.VITE_API_URL}/Users`);
+    //             setUsers(response.data);
+    //         } catch (error) {
+    //             console.error('Failed to fetch users:', error);
+    //             // Handle error appropriately (show toast, set error state, etc.)
+    //         }
+    //     }
+    //     getAllUsers();
+    // }, [])
 
 
     return (
