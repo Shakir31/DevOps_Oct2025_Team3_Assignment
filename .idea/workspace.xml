@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8263c01d-8054-4d83-9cde-fee66d80c7ea" name="Changes" comment="Finished delete function">
+    <list default="true" id="8263c01d-8054-4d83-9cde-fee66d80c7ea" name="Changes" comment="update table accordingly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/data-table/data-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/data-table/data-table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/data-table/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/data-table/page.tsx" afterDir="false" />
     </list>
@@ -98,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768397800704</updated>
       <workItem from="1768397801854" duration="26705000" />
-      <workItem from="1768626233336" duration="9951000" />
+      <workItem from="1768626233336" duration="13776000" />
     </task>
     <task id="LOCAL-00001" summary="Add tailwind">
       <option name="closed" value="true" />
@@ -132,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768636167006</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update table accordingly">
+      <option name="closed" value="true" />
+      <created>1768638227275</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1768638227275</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +152,7 @@
     <MESSAGE value="Adding checkbox" />
     <MESSAGE value="finished dropdown menu" />
     <MESSAGE value="Finished delete function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished delete function" />
+    <MESSAGE value="update table accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="update table accordingly" />
   </component>
 </project>

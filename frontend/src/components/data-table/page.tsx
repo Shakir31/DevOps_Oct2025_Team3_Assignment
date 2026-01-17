@@ -124,6 +124,7 @@ export default function DemoPage() {
     }
 
 
+
     return (
         <div className="flex flex-col items-center justify-center w-full h-full px-6 py-4">
             <DataTable columns={columns} data={Users} />
