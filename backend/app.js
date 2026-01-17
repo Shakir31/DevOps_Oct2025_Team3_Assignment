@@ -22,7 +22,7 @@ app.post("/login", authController.login);
 app.post("/logout", authenticateToken, authController.logout);
 app.get("/profile", authenticateToken, authController.getProfile);
 
-app.get("/Users",authenticateToken, adminController.getAllUsers);
+app.get("/Users", adminController.getAllUsers);
 
 //file routes
 app.use("/dashboard", fileRoutes);
