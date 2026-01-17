@@ -32,7 +32,7 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div className="flex flex-col w-full h-full gap-4">
+        <div className="flex flex-col w-[1200px] h-[80vh] gap-4">
             <div className="flex-2/3 flex col overflow-hidden rounded-md border border-gray-300 shadow-sm ">
                 <Table className={undefined}>
                     <TableHeader className="sticky top-0 z-10 bg-background shadow-md">
@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex-1 text-sm text-muted-foreground">
+            <div className="flex-0.5 text-sm text-muted-foreground">
                 {table.getSelectedRowModel().rows.length} of {}
                 {table.getRowModel().rows.length} rows selected
             </div>
