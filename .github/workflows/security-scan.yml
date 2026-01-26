@@ -28,6 +28,7 @@ jobs:
       - name: Run SCA for backend
         run: |
           npm audit --audit-level=high
+        working-directory: ./backend #added working-directory cus it kept failing the tests
       
       # Secret Scanning
       - name: Secret Scanning
@@ -39,4 +40,5 @@ jobs:
       
       # Frontend Dependency Check
       - name: Check frontend vulnerabilities
+        if: github.event_name == 'pull_request' #this makes it run only on pull requests ah yall can change ltr
         uses: actions/dependency-review-action@v4
