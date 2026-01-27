@@ -1,0 +1,44 @@
+name: Security Scan
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      # SAST
+      - name: Run SAST (Semgrep)
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: p/ci
+      
+      # SCA
+      - name: Run SCA (npm audit)
+        run: |
+          npm audit --audit-level=high
+        working-directory: ./frontend
+      
+      - name: Run SCA for backend
+        run: |
+          npm audit --audit-level=high
+        working-directory: ./backend #added working-directory cus it kept failing the tests
+      
+      # Secret Scanning
+      - name: Secret Scanning
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.pull_request.base.sha || 'HEAD~1' }}
+          head: HEAD
+      
+      # Frontend Dependency Check
+      - name: Check frontend vulnerabilities
+        if: github.event_name == 'pull_request' #this makes it run only on pull requests ah yall can change ltr
+        uses: actions/dependency-review-action@v4

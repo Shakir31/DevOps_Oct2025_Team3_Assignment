@@ -1,0 +1,65 @@
+name: Build frontend folder
+
+on:
+  pull_request:
+    branches: [main]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./frontend
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Define Security Gates
+        run: |
+          echo "SECURITY_GATES_ACTIVATED=true" >> $GITHUB_ENV
+          echo "MAX_VULNERABILITIES=0" >> $GITHUB_ENV
+          echo "MAX_CRITICAL=0" >> $GITHUB_ENV
+          echo "MAX_HIGH=0" >> $GITHUB_ENV
+      
+      - name: Frontend Security Scan
+        id: frontend-scan
+        run: |
+          npm ci
+          npm audit --audit-level=high --json > audit-report.json
+          
+          # Parse results against criteria
+          vulnerabilities=$(jq '.metadata.vulnerabilities.total' audit-report.json)
+          critical=$(jq '.metadata.vulnerabilities.critical' audit-report.json)
+          high=$(jq '.metadata.vulnerabilities.high' audit-report.json)
+          
+          echo "vulnerabilities=$vulnerabilities" >> $GITHUB_OUTPUT
+          echo "critical=$critical" >> $GITHUB_OUTPUT
+          echo "high=$high" >> $GITHUB_OUTPUT
+          
+          # Fail if criteria not met
+          if [[ $critical -gt 0 ]] || [[ $high -gt 0 ]]; then
+            echo "❌ SECURITY GATE FAILED: Critical or High vulnerabilities found"
+            exit 1
+          fi
+  
+  build:
+    runs-on: ubuntu-latest
+    needs: security-checks  
+    strategy:
+      matrix:
+        node-version: [24.x]
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          cache-dependency-path: ./frontend/package-lock.json
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - name: Run frontend tests
+        run: |
+          npm test -- --passWithNoTests  # Placeholder - add frontend tests
