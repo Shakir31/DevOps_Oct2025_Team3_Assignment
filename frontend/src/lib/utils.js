@@ -12,3 +12,5 @@ export function formatDate(date) {
   const dated = parseISO(date)
   return format(dated, "dd MMM yyyy, HH:mm")
 }
+
+
