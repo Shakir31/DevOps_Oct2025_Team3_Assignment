@@ -21,6 +21,7 @@ jobs:
               with:
                   node-version: 18
                   cache: npm
+                  cache-dependency-path: ./backend/package-lock.json
             - run: npm ci
             - run: npm test
 
@@ -33,6 +34,7 @@ jobs:
               with:
                   node-version: 18
                   cache: npm
+                  cache-dependency-path: ./backend/package-lock.json
             - run: npm ci
             - run: npm run lint
 
