@@ -137,11 +137,12 @@ export default function MyFilesTable() {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
                     <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                         <div className="flex-1">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label htmlFor="fileUpload" className="block text-sm font-medium text-gray-700 mb-2">
                                 Select Files to Upload
                             </label>
                             <div className="flex items-center gap-3">
                                 <input
+                                    id="fileUpload"
                                     type="file"
                                     multiple
                                     onChange={handleFileChange}
@@ -273,6 +274,7 @@ export default function MyFilesTable() {
                                                 onClick={() => handleDownload(f.fileid, f.originalname)}
                                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors duration-150 text-sm font-medium"
                                                 title="Download file"
+                                                aria-label={`Download ${f.originalname}`}
                                             >
                                                 <Download className="w-4 h-4" />
                                                 Download
@@ -282,6 +284,7 @@ export default function MyFilesTable() {
                                                 onClick={() => handleDelete(f.fileid)}
                                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-1 transition-colors duration-150 text-sm font-medium"
                                                 title="Delete file"
+                                                aria-label={`Delete ${f.originalname}`}
                                             >
                                                 <Trash2 className="w-4 h-4" />
                                                 Delete

@@ -61,7 +61,6 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({
             setIsDialogOpen(false)
             setFormData({ username: "", email: "", role: "", password: "" })
         } catch (error) {
-            console.error("Failed to create user:", error)
             alert("Failed to create user. Please try again.")
         } finally {
             setIsLoading(false)
@@ -128,7 +127,7 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({
                                 onValueChange={(value: string) => setFormData({ ...formData, role: value })}
                                 disabled={isLoading}
                             >
-                                <SelectTrigger className={undefined}>
+                                <SelectTrigger aria-label="Role" className={undefined}>
                                     <SelectValue placeholder="Select a role" />
                                 </SelectTrigger>
                                 <SelectContent className={undefined}>

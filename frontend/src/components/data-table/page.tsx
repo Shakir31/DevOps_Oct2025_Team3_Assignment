@@ -42,23 +42,23 @@ export default function DemoPage() {
 
     const columnHelper = createColumnHelper<User>();
     const columns = [
-        columnHelper.display({
-            id:"action",
-            header: ({table}) => (
-                <Checkbox
-                    checked={table.getIsAllPageRowsSelected() ||
-                        (table.getIsSomePageRowsSelected() && "indeterminate")}
-                    onCheckedChange={(value: any) => table.toggleAllPageRowsSelected(!!value)}
-                    arial-label="Select All" className={undefined}            />
-            ),
-            cell: ({ row }) => (
-                <Checkbox
-                    checked={row.getIsSelected()}
-                    onCheckedChange={(value: any) => row.toggleSelected(!!value)}
-                    aria-label="Select row" className={undefined}
-                />
-            ),
-        }),
+        // columnHelper.display({
+        //     id:"action",
+        //     header: ({table}) => (
+        //         <Checkbox
+        //             checked={table.getIsAllPageRowsSelected() ||
+        //                 (table.getIsSomePageRowsSelected() && "indeterminate")}
+        //             onCheckedChange={(value: any) => table.toggleAllPageRowsSelected(!!value)}
+        //             arial-label="Select All" className={undefined}            />
+        //     ),
+        //     cell: ({ row }) => (
+        //         <Checkbox
+        //             checked={row.getIsSelected()}
+        //             onCheckedChange={(value: any) => row.toggleSelected(!!value)}
+        //             arial-label="Select row" className={undefined}
+        //         />
+        //     ),
+        // }),
         columnHelper.accessor("username",{
             header: () => <p>Username</p>,
             cell:(info) => info.getValue(),
@@ -94,8 +94,8 @@ export default function DemoPage() {
 
                 return (
                     <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant={"ghost"} className={undefined}>
+                        <DropdownMenuTrigger asChild aria-label>
+                            <Button aria-label={`More actions for ${user.email}`} variant={"ghost"} className={undefined}>
                                 <MoreVertical/>
                             </Button>
                         </DropdownMenuTrigger>
