@@ -53,6 +53,7 @@ describe("File Controller", () => {
 
     test("should handle error when getting files", async () => {
       //arrange
+      console.log('[TEST] Expected behavior: Throwing fake "Database error" to verify getUserFiles handles it correctly');
       authModel.getUserProfile.mockRejectedValue(new Error("Database error"));
 
       //act
@@ -133,6 +134,7 @@ describe("File Controller", () => {
       const mockUserProfile = { userid: 1 };
 
       authModel.getUserProfile.mockResolvedValue(mockUserProfile);
+      console.log('[TEST] Expected behavior: Throwing fake "Database error" to verify file cleanup on failure');
       fileModel.createFileRecord.mockRejectedValue(new Error("Database error"));
       fs.unlink.mockImplementation((path, callback) => callback(null));
 

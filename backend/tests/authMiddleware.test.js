@@ -145,6 +145,7 @@ describe("Auth Middleware", () => {
       //arrange
       req.user = { id: "test-user-id" };
 
+      console.log('[TEST] Expected behavior: Throwing fake "Database error" to verify isAdmin handles it correctly');
       authModel.getUserProfile.mockRejectedValue(new Error("Database error"));
 
       //act

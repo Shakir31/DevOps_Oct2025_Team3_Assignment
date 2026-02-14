@@ -1,12 +1,10 @@
-# DevOps_Oct2025_Team3_Assignment
-
-[Site](https://devopsassignment.pages.dev) \
-[Server](https://devopsassignment-xw1s.onrender.com) (The server will sleep after inactivity, so you will have to wake it up by visiting the API.)
-
+DevOps_Oct2025_Team3_Assignment
+Site
+Server (The server will sleep after inactivity, so you will have to wake it up by visiting the API.)
 
 DevSecOps Full-Stack Application
-1. Overview
 
+Overview
 This repository contains a full-stack web application developed for a DevOps assignment, designed to demonstrate CI/CD automation, security enforcement, and governance using DevSecOps practices.
 
 The system consists of:
@@ -21,9 +19,7 @@ Integrated security scanning and email-based stakeholder notifications
 
 The project enforces pull-request–only changes to the protected main branch and blocks insecure or failing builds automatically.
 
-2. Architecture
-Frontend
-
+Architecture Frontend
 Framework: React (Vite)
 
 Styling: Tailwind CSS + Radix UI
@@ -33,6 +29,8 @@ Routing: React Router
 Authentication context managed via React Context API
 
 Supabase client integration for authentication and data access
+
+Testing: Vitest + React Testing Library + Playwright (E2E)
 
 Backend
 
@@ -50,8 +48,7 @@ Database & auth provider: Supabase
 
 Testing: Jest + Supertest
 
-3. Team & Technical Roles
-
+Team & Technical Roles
 Charlotte – Frontend and backend deployment, workflow setup
 
 Shakir – Backend feature implementation and unit testing
@@ -62,19 +59,9 @@ Lim Zhi – QA Tester, responsible for integration testing, security testing, an
 
 Ethan – CI/CD pipelines, DevSecOps security scans, branch protection, email notifications
 
-4. Repository Structure
-/
-├── frontend/              # React (Vite) frontend
-│   ├── src/
-│   ├── public/
-│   └── package.json
-├── backend/               # Express backend
-│   ├── app.js
-│   └── package.json
-└── .github/workflows/     # CI/CD pipelines
+Repository Structure / ├── frontend/ │ ├── src/ │ │ └── tests/ │ ├── e2e/ │ ├── public/ │ └── package.json ├── backend/ │ ├── app.js │ ├── tests/ │ └── package.json ├── package.json └── .github/workflows/
 
-5. Local Development Setup
-Prerequisites
+Local Development Setup Prerequisites
 
 Node.js v18+
 
@@ -82,62 +69,53 @@ npm
 
 Git
 
-Frontend
-cd frontend
-npm ci
-npm run dev
+Quick Start (from root directory) npm run install:all npm test npm run dev
 
+Frontend cd frontend npm ci npm run dev
 
 Available scripts:
 
-npm run build      # Production build
-npm run preview    # Preview build output
-npm run lint       # ESLint
-npm test           # CI placeholder test
+npm run build npm run preview npm run lint npm test npm run test:coverage npm run test:e2e
 
-Backend
-cd backend
-npm ci
-npm run dev
-
+Backend cd backend npm ci npm run dev
 
 Available scripts:
 
-npm test               # Run Jest tests
-npm run test:watch     # Watch mode
-npm run test:coverage  # Coverage report
+npm test npm run test:watch npm run test:coverage
 
-6. Environment Configuration
-Backend .env
-SUPABASE_URL=
-SUPABASE_KEY=
-JWT_SECRET=
-
-Frontend .env
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-
+Environment Configuration Backend .env SUPABASE_URL= SUPABASE_ANON_KEY= SUPABASE_SERVICE_ROLE_KEY= JWT_SECRET= PORT=3000 NODE_ENV=development
+Frontend .env VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= VITE_API_URL=http://localhost:3000
 
 Secrets are never committed and are injected securely in CI via GitHub Secrets.
 
-7. Testing Strategy
-Backend Testing
+Testing Strategy Backend Testing
+63 tests across 6 test suites
 
 Unit tests for authentication, admin, and file features
 
 Integration tests to validate API behaviour
 
+Security tests for SQL injection, XSS, unauthorized access
+
 Tests executed automatically during CI
+
+Coverage: 65%+ lines
 
 Frontend Testing
 
-Placeholder test stage included to validate CI pipeline structure
+17 unit tests across 3 test suites
 
-Future expansion planned for UI and E2E testing
+Component tests: LoginPage, Header
 
-8. CI/CD Pipeline Design
-Branch Governance
+Context tests: AuthContext
 
+E2E tests for authentication, dashboard, admin flows
+
+Tests executed automatically during CI
+
+Run All Tests npm test npm run test:e2e npm run test:all
+
+CI/CD Pipeline Design Branch Governance
 main branch is protected
 
 No direct pushes allowed
@@ -152,8 +130,7 @@ Security scan success
 
 Approval before merge
 
-GitHub Actions Workflows
-build-client.yml
+GitHub Actions Workflows build-client.yml
 
 Trigger: Pull Request to main
 
@@ -165,7 +142,9 @@ Frontend vulnerability scan (npm audit)
 
 Frontend build
 
-Test placeholder
+Frontend unit tests with coverage
+
+E2E tests (Playwright)
 
 Final notification job (email)
 
@@ -189,8 +168,7 @@ Security gate enforcement
 
 Final notification job (email)
 
-9. Automated Stakeholder Notifications
-
+Automated Stakeholder Notifications
 Email notifications sent using SMTP
 
 Triggered on:
@@ -213,16 +191,9 @@ Job results summary
 
 GitHub Actions run URL
 
-Required GitHub Secrets
-SMTP_HOST
-SMTP_PORT
-SMTP_USER
-SMTP_PASS
-EMAIL_FROM
-EMAIL_TO
+Required GitHub Secrets SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS EMAIL_FROM EMAIL_TO
 
-10. Security Controls
-
+Security Controls
 Dependency vulnerability scanning (SCA)
 
 Static application security testing (SAST)
@@ -235,25 +206,7 @@ Role-based unauthorized access testing
 
 CI-enforced merge blocking
 
-11. Project Management
-
-Agile Scrum methodology
-
-Jira used for backlog, sprint planning, and tracking
-
-Two sprints executed:
-
-Sprint 1: Core functionality and deployment
-
-Sprint 2: Security hardening, CI/CD automation, documentation
-
-Sprint reviews and retrospectives conducted after each sprint
-
-12. Sprint Goals
-
-Sprint 1: Deliver core backend and frontend functionality and ensure the system runs end-to-end.
-Sprint 2: Harden security, expand test coverage, strengthen CI/CD automation, and prepare submission-ready documentation.
-
-13. Summary
-
+Summary
 This project demonstrates practical application of DevSecOps principles, including automated testing, security enforcement, protected branch governance, and continuous stakeholder feedback through CI/CD pipelines.
+
+Test Results: 80 tests total (63 backend + 17 frontend) | Node.js 18+ required

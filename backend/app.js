@@ -30,7 +30,11 @@ app.get("/profile", authenticateToken, authController.getProfile);
 app.use("/dashboard", fileRoutes);
 app.use("/admin", adminRoutes);
 
-//start server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+//start server only if not being imported (for tests)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;

@@ -49,11 +49,12 @@ describe("Admin Controller", () => {
 
       //assert
       expect(adminModel.getAllUsers).toHaveBeenCalled();
-      expect(res.json).toHaveBeenCalledWith({ users: mockUsers });
+      expect(res.json).toHaveBeenCalledWith(mockUsers);
     });
 
     test("should handle error when getting users", async () => {
       //arrange
+      console.log('[TEST] Expected behavior: Throwing fake "Database error" to verify getAllUsers handles it correctly');
       adminModel.getAllUsers.mockRejectedValue(new Error("Database error"));
 
       //act

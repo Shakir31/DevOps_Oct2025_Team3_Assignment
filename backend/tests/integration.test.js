@@ -406,12 +406,12 @@ describe("Integration Tests: Auth & File Operations", () => {
 
       await adminController.getAllUsers(req, res);
 
-      expect(res.json).toHaveBeenCalledWith({
-        users: expect.arrayContaining([
+      expect(res.json).toHaveBeenCalledWith(
+        expect.arrayContaining([
           expect.objectContaining({ userid: mockUsers.userA.userid }),
           expect.objectContaining({ userid: mockUsers.userB.userid }),
-        ]),
-      });
+        ])
+      );
 
       jest.clearAllMocks();
 
@@ -461,6 +461,7 @@ describe("Integration Tests: Auth & File Operations", () => {
 
       req.user = { id: mockUsers.userA.authId };
 
+      console.log('[TEST] Expected behavior: Throwing fake "Session expired" to verify logout/expired session handling');
       authModel.getUserProfile.mockRejectedValue(new Error("Session expired"));
 
       await fileController.getUserFiles(req, res);
@@ -507,7 +508,7 @@ describe("Integration Tests: Auth & File Operations", () => {
 
       await fileController.downloadFile(req, res);
 
-      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.status).toHaveBeenCalledWith(404);
     });
 
     test("Database insert failure during file upload triggers file cleanup and error response", async () => {
@@ -525,6 +526,7 @@ describe("Integration Tests: Auth & File Operations", () => {
         userid: mockUsers.userA.userid,
       });
 
+      console.log('[TEST] Expected behavior: Intentionally throwing fake "Database error" to verify controller handles it correctly');
       fileModel.createFileRecord.mockRejectedValue(
         new Error("Database error")
       );

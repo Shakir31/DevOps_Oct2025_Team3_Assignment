@@ -288,6 +288,7 @@ describe("Auth Controller", () => {
 
     test("should handle error when getting profile", async () => {
       //arrange
+      console.log('[TEST] Expected behavior: Throwing fake "Database error" to verify getProfile handles it correctly');
       authModel.getUserProfile.mockRejectedValue(new Error("Database error"));
 
       //act
