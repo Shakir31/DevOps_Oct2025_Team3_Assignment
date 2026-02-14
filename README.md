@@ -80,9 +80,7 @@ This is a full-stack DevSecOps authentication system with automated CI/CD pipeli
 - Set up initial project structure
 
 **Yilin:**
-- Designed database schema with foreign keys and indexes
 - Built user dashboard UI and functionality
-- Implemented backend API endpoints
 - Integrated frontend with backend services
 
 **Charlotte:**
