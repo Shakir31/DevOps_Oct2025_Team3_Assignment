@@ -379,27 +379,27 @@ Configured via GitHub Secrets:
 
 | Route | Method | Description | Access |
 |-------|--------|-------------|--------|
-| `/api/auth/register` | POST | Register new user | Public |
-| `/api/auth/login` | POST | Login user | Public |
-| `/api/auth/logout` | POST | Logout user | Authenticated |
-| `/api/auth/profile` | GET | Get user profile | Authenticated |
+| `/register` | POST | Register new user | Public |
+| `/login` | POST | Login user | Public |
+| `/logout` | POST | Logout user | Authenticated |
+| `/profile` | GET | Get user profile | Authenticated |
 
 ### File Management
 
 | Route | Method | Description | Access |
 |-------|--------|-------------|--------|
-| `/api/files` | GET | Get user's files | Authenticated |
-| `/api/files/upload` | POST | Upload file | Authenticated |
-| `/api/files/download/:id` | GET | Download file | Authenticated (own files) |
-| `/api/files/:id` | DELETE | Delete file | Authenticated (own files) |
+| `/dashboard` | GET | Get user's files | Authenticated |
+| `/dashboard/upload` | POST | Upload file | Authenticated |
+| `/dashboard/download/:id` | GET | Download file | Authenticated (own files) |
+| `/dashboard/delete/:id` | DELETE | Delete file | Authenticated (own files) |
 
 ### Admin
 
 | Route | Method | Description | Access |
 |-------|--------|-------------|--------|
-| `/api/admin` | GET | Get all users | Admin only |
-| `/api/admin/create_user` | POST | Create user | Admin only |
-| `/api/admin/delete_user/:id` | POST | Delete user | Admin only |
+| `/admin` | GET | Get all users | Admin only |
+| `/admin/create_user` | POST | Create user | Admin only |
+| `/admin/delete_user/:id` | POST | Delete user | Admin only |
 
 ---
 
